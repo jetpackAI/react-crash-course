@@ -1,7 +1,10 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { Button, Form, Input, Modal, Row } from "antd";
 import React from "react";
 
 const NewSimulationForm = () => {
+  const queryClient = useQueryClient();
+
   const [name, setName] = React.useState("");
   return (
     <Row justify="end">
@@ -19,6 +22,8 @@ const NewSimulationForm = () => {
           // TODO : create the simulation with the API
           // TODO : Reset the form
           // TODO : Close the modal
+          // TODO : Refetch the simulation list
+          // queryClient.fetchQuery(["list"]); // use the key of the list query
         }}
         onCancel={async () => {
           // TODO : Reset the form
