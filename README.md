@@ -93,5 +93,6 @@ axios.post("http://localhost:3001/simulation", {
 
 ## `Some Ressource`
 
+- [React hooks](https://reactjs.org/docs/hooks-overview.html)
 - [Array Functions](https://www.w3schools.com/jsref/jsref_map.asp)
 - [Make requests to the API](https://blog.openreplay.com/fetching-and-updating-data-with-react-query/)
