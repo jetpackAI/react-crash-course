@@ -4,7 +4,9 @@ import App from "./components/App/App";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "antd/dist/antd.css";
+import axios from "axios";
 
+axios.defaults.baseURL = "http://localhost:3001";
 const queryClient = new QueryClient();
 
 ReactDOM.render(
