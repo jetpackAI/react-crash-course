@@ -1,6 +1,7 @@
-import * as Plot from "@observablehq/plot";
 import { PlotFigure } from "plot-react";
+import * as Plot from "@observablehq/plot";
 import React from "react";
+import {} from "@tanstack/react-query";
 
 const fakedata = [
   { x: 0, y: 0 },
