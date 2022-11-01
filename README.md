@@ -91,7 +91,7 @@ axios.post("http://localhost:3001/simulation", {
 }
 ```
 
-## `Some Ressource`
+## `Some Ressources`
 
 - [React hooks](https://reactjs.org/docs/hooks-overview.html)
 - [Array Functions](https://www.w3schools.com/jsref/jsref_map.asp)
