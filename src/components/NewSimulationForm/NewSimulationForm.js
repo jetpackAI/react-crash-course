@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { Button, Form, Input, Modal, Row } from "antd";
 import axios from "axios";
 import React from "react";
@@ -6,6 +7,7 @@ const NewSimulationForm = () => {
   const [name, setName] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [isModalVisible, setIsModalVisible] = React.useState(false);
+  const queryClient = useQueryClient();
   return (
     <Row justify="end">
       <Button
@@ -26,6 +28,7 @@ const NewSimulationForm = () => {
           setIsModalVisible(false);
           setDescription("");
           setName("");
+          queryClient.fetchQuery(["list"]);
         }}
         onCancel={() => {
           setIsModalVisible(false);
