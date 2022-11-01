@@ -1,37 +1,48 @@
 import { Button, Form, Input, Modal, Row } from "antd";
+import axios from "axios";
 import React from "react";
 
 const NewSimulationForm = () => {
   const [name, setName] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
   return (
     <Row justify="end">
       <Button
         type="primary"
         onClick={() => {
-          // TODO : Open the modal with the form
+          setIsModalVisible(true);
         }}
       >
         Create new simulation
       </Button>
       <Modal
-        visible={false} // TODO : set the visibility of the modal
-        onOk={() => {
-          // TODO : create the simulation with the API
-          // TODO : Reset the form
-          // TODO : Close the modal
+        visible={isModalVisible}
+        onOk={async () => {
+          await axios.post("http://localhost:3001/simulation", {
+            name,
+            description,
+          });
+          setIsModalVisible(false);
+          setDescription("");
+          setName("");
         }}
         onCancel={() => {
-          // TODO : Reset the form
-          // TODO : Close the modal
+          setIsModalVisible(false);
+          setDescription("");
+          setName("");
         }}
-        style={{ width: "80%" }}
+        width="80%"
       >
         <h2>New Simulation</h2>
         <Form.Item label="Name">
           <Input value={name} onChange={(e) => setName(e.target.value)} />
-          {
-            // TODO : add a description field
-          }
+        </Form.Item>
+        <Form.Item label="Description">
+          <Input.TextArea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
         </Form.Item>
       </Modal>
     </Row>
