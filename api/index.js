@@ -19,28 +19,28 @@ const items = [
 ];
 
 app.use(cors());
-app.use(bodyParser.json({ type: "application/*+json" }));
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send(JSON.stringify({ message: "Hello World!" }));
+  return res.send(JSON.stringify({ message: "Hello World!" }));
 });
 
 app.get("/simulations", (req, res) => {
-  res.sendStatus(200).send(JSON.stringify(items));
+  return res.send(items);
 });
 
 app.get("/simulation/:id", (req, res) => {
   // eslint-disable-next-line eqeqeq
   const item = items.find((item) => item.id == req.params.id);
   item.data = data;
-  res.sendStatus(200).send(JSON.stringify(item));
+  return res.status(200).send(item);
 });
 
 app.post("/simulation", (req, res) => {
-  if (!req.body) return res.sendStatus(400).send("No body provided");
-  if (!req.body.name) return res.sendStatus(400).send("No name provided");
+  if (!req.body) return res.status(400).send("No body provided");
+  if (!req.body.name) return res.status(400).send("No name provided");
   if (!req.body.description)
-    return res.sendStatus(400).send("No description provided");
+    return res.status(400).send("No description provided");
   const item = {
     id: items.length + 1,
     name: req.body.name,
@@ -48,7 +48,7 @@ app.post("/simulation", (req, res) => {
   };
   console.log("creating simulation", item);
   items.push(item);
-  res.sendStatus(201).send(JSON.stringify(item));
+  return res.status(201).send(item);
 });
 
 app.listen(port, () => {
