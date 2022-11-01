@@ -12,6 +12,7 @@ ReactDOM.render(
     <QueryClientProvider client={queryClient}>
       <App />
       <ReactQueryDevtools />
+      {/* This is a dev tool to help you debug your queries */}
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")
