@@ -1,0 +1,31 @@
+{
+  "plugins": ["react"],
+  "extends": ["eslint:recommended", "react-app", "google", "prettier"],
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "es2020": true,
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "new-cap": "off",
+    "require-jsdoc": "off",
+    "max-len": [
+      "warn",
+      {
+        "code": 150,
+        "ignorePattern": "^(import|export).*$",
+        "ignoreTemplateLiterals": true,
+        "ignoreUrls": true,
+        "ignoreTrailingComments": true,
+        "ignoreComments": true,
+        "ignoreStrings": true
+      }
+    ],
+    "@typescript-eslint/no-this-alias": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "camelcase": "off",
+    "no-unused-vars": "warn"
+  }
+}

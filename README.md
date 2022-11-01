@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# Jetpack React Workshop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an introduction to react for non-frontend developers
 
-## Available Scripts
+## `Start the app`
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
+First, makes sure Docker is running  
+Run `docker-compose up` in the current directory  
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You may also see errors in the console (CMD + SHIFT + I)
 
-### `npm test`
+## `Goals`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+At the end of this workshop you'll be able to
 
-### `npm run build`
+1. Understand the basics of React
+2. Makes the UI interact with an API
+3. Do a bit of dataviz with ObservableHQ
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Your goal in this project will be to make an interface for users to create simulations.  
+Once the user created a simulation, data are processed and the user should be able to vizualize it.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The app specifications could be split in 3 tickets:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. As a user, I should be able to create a new simulation.
+2. As a user, I should be able to list the created simulations.
+3. As a user, I should be able to select a simulation and view data related to it
 
-### `npm run eject`
+## `API`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+You'll need 3 api call for this project  
+The api is running on `localhost:3001`  
+The logic in the API is very simple and data are mostly faked
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `1. List (GET /simulations)`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+axios.get("http://localhost:3001/simulations")
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+[
+  {
+    "id": 1,
+    "name": "Hello World",
+    "description": "This is a simulation"
+  },
+  {
+    "id": 2,
+    "name": "Hello World 2",
+    "description": "This is a simulation"
+  }
+]
+```
 
-## Learn More
+### `2. Get (GET /simulation/:id)`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+axios.get("http://localhost:3001/simulation/1")
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+{
+  "id": 1,
+  "name": "Hello World",
+  "description": "This is a simulation",
+  "data": [
+    {"time":"2022-10-31 00:00:00","value":0.0776657077625572},
+    {"time":"2022-10-31 00:15:00","value":0.0607786027397261},
+    ...
+  ]
+}
+```
 
-### Code Splitting
+### `3. create (POST /simulation)`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+axios.post("http://localhost:3001/simulation", {
+  "name": "Hello World",
+  "description": "This is a simulation"
+})
+```
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+{
+  "id": 1,
+  "name": "Hello World",
+  "description": "This is a simulation"
+}
+```
