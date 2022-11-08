@@ -8,4 +8,5 @@ ENV NODE_ENV development
 # Install dependencies
 RUN npm install
 # Deploy app for local development
-CMD npm start
+# CMD npm start
+CMD npm install && npm start
