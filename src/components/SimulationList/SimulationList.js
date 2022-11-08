@@ -1,7 +1,16 @@
 import { Table } from "antd";
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { Table } from "antd";
+import axios from "axios";
+import React from "react";
 
 const SimulationList = ({ selectedSimulationId, setSelectedSimulationId }) => {
+  const { data = [] } = useQuery(["list"], async () => {
+    const response = await axios.get("http://localhost:3001/simulations");
+    console.log(response);
+    return response.data;
+  });
   return (
     <div>
       <Table
@@ -11,27 +20,7 @@ const SimulationList = ({ selectedSimulationId, setSelectedSimulationId }) => {
             dataIndex: "name",
           },
         ]}
-        dataSource={[
-          // TODO : get the simulation list from the API (notice the api is not returning `key` attribute)
-          {
-            name: "Simulation 1",
-            description: "This is a simulation",
-            id: 1,
-            key: 1,
-          },
-          {
-            name: "Simulation 2",
-            description: "This is a simulation",
-            id: 2,
-            key: 2,
-          },
-          {
-            name: "Simulation 3",
-            description: "This is a simulation",
-            id: 3,
-            key: 3,
-          },
-        ]}
+        dataSource={data.map((d) => ({ ...d, key: d.id }))}
         rowSelection={{
           type: "radio",
           selectedRowKeys: [selectedSimulationId],

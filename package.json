@@ -1,6 +1,7 @@
 {
   "name": "react-crash-course",
   "version": "0.1.0",
+  "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
     "@observablehq/plot": "^0.3.2",
