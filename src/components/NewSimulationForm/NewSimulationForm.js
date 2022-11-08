@@ -1,11 +1,13 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { Button, Form, Input, Modal, Row } from "antd";
+import axios from "axios";
 import React from "react";
 
 const NewSimulationForm = () => {
-  const queryClient = useQueryClient();
-
   const [name, setName] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
+  const queryClient = useQueryClient();
   return (
     <Row justify="end">
       <Button
@@ -17,17 +19,21 @@ const NewSimulationForm = () => {
         Create new simulation
       </Button>
       <Modal
-        visible={false} // TODO : set the visibility of the modal
+        visible={isModalVisible}
         onOk={async () => {
-          // TODO : create the simulation with the API
-          // TODO : Reset the form
-          // TODO : Close the modal
-          // TODO : Refetch the simulation list
-          // queryClient.fetchQuery(["list"]); // use the key of the list query
+          await axios.post("http://localhost:3001/simulation", {
+            name,
+            description,
+          });
+          setIsModalVisible(false);
+          setDescription("");
+          setName("");
+          queryClient.fetchQuery(["list"]);
         }}
-        onCancel={async () => {
-          // TODO : Reset the form
-          // TODO : Close the modal
+        onCancel={() => {
+          setIsModalVisible(false);
+          setDescription("");
+          setName("");
         }}
         width="80%"
       >
@@ -35,10 +41,12 @@ const NewSimulationForm = () => {
         <Form.Item label="Name">
           <Input value={name} onChange={(e) => setName(e.target.value)} />
         </Form.Item>
-        {
-          // TODO : add a description field
-          // Notice Input.TextArea might be more appropriate
-        }
+        <Form.Item label="Description">
+          <Input.TextArea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </Form.Item>
       </Modal>
     </Row>
   );
