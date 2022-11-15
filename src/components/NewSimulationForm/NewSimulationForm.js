@@ -18,27 +18,16 @@ const NewSimulationForm = () => {
       </Button>
       <Modal
         visible={false} // TODO : set the visibility of the modal
-        onOk={async () => {
-          // TODO : create the simulation with the API
-          // TODO : Reset the form
-          // TODO : Close the modal
-          // TODO : Refetch the simulation list
-          // queryClient.fetchQuery(["list"]); // use the key of the list query
-        }}
-        onCancel={async () => {
-          // TODO : Reset the form
-          // TODO : Close the modal
-        }}
         width="80%"
       >
         <h2>New Simulation</h2>
-        <Form.Item label="Name">
-          <Input value={name} onChange={(e) => setName(e.target.value)} />
-        </Form.Item>
-        {
-          // TODO : add a description field
-          // Notice Input.TextArea might be more appropriate
-        }
+        <a href="https://ant.design/components/input/">
+          https://ant.design/components/input/
+        </a>
+        <br />
+        <a href="https://ant.design/components/modal/">
+          https://ant.design/components/modal/
+        </a>
       </Modal>
     </Row>
   );
