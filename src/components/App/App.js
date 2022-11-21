@@ -1,13 +1,9 @@
 import { useState } from "react";
 import { Col, Empty, Row } from "antd";
-import SimulationList from "../TodoList/TodoList";
-import NewSimulationForm from "../NewTodoForm/NewTodoForm";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import SimulationView from "../TodoView/TodoView";
 import TodoList from "../TodoList/TodoList";
-import NewTodoForm from "../NewTodoForm/NewTodoForm";
 import TodoView from "../TodoView/TodoView";
+import NewTodoForm from "../NewTodoForm/NewTodoForm";
 
 function App() {
   const [selectedTodo, setSelectedTodo] = useState();
@@ -29,7 +25,7 @@ function App() {
           {selectedTodo ? (
             <TodoView todo={selectedTodo} />
           ) : (
-            <Empty description="No simulation selected" />
+            <Empty description="No Todo selected" />
           )}
         </Col>
       </Row>

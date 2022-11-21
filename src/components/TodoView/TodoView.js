@@ -14,10 +14,6 @@ const fakedata = [
 ];
 
 const TodoView = ({ todo }) => {
-  // TODO : get the simulation from the API
-  // TODO : display the simulation name and description
-  // TODO : display the simulation data in a chart
-
   /**
    * this is an example of api call
    */
@@ -36,8 +32,9 @@ const TodoView = ({ todo }) => {
     <div>
       <h2>Todo View</h2>
       <div>show here informations you can show about the todo</div>
-      <div>API call returned : {helloWorldData?.data}</div>
-      <PlotFigure
+
+      {/* <div>API call returned : {helloWorldData?.message}</div>*/}
+      {/* <PlotFigure
         options={{
           marks: [
             Plot.line(fakedata, {
@@ -47,7 +44,7 @@ const TodoView = ({ todo }) => {
             }),
           ],
         }}
-      />
+      />*/}
     </div>
   );
 };
