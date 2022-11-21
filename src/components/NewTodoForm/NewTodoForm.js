@@ -2,9 +2,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Button, Form, Input, Modal, Row } from "antd";
 import React from "react";
 
-const NewSimulationForm = () => {
-  const queryClient = useQueryClient();
-
+const NewTodoForm = () => {
   const [name, setName] = React.useState("");
   return (
     <Row justify="end">
@@ -14,13 +12,15 @@ const NewSimulationForm = () => {
           // TODO : Open the modal with the form
         }}
       >
-        Create new simulation
+        Create new Todo
       </Button>
       <Modal
         visible={false} // TODO : set the visibility of the modal
         width="80%"
       >
-        <h2>New Simulation</h2>
+        <h2>New Todo</h2>
+        Documentation :
+        <br />
         <a href="https://ant.design/components/input/">
           https://ant.design/components/input/
         </a>
@@ -33,4 +33,4 @@ const NewSimulationForm = () => {
   );
 };
 
-export default NewSimulationForm;
+export default NewTodoForm;
