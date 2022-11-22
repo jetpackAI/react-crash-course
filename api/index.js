@@ -25,6 +25,10 @@ app.get("/", (req, res) => {
   return res.send(JSON.stringify({ message: "Hello World!" }));
 });
 
+app.get("/data", (req, res) => {
+  return res.send(JSON.stringify(data));
+});
+
 app.get("/simulations", (req, res) => {
   return res.send(items);
 });
