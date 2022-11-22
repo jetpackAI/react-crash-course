@@ -19,7 +19,6 @@ function App() {
             selectedTodo={selectedTodo}
             setSelectedTodo={setSelectedTodo}
           />
-          <NewTodoForm />
         </Col>
         <Col span={12}>
           {selectedTodo ? (

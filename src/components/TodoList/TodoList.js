@@ -1,30 +1,30 @@
 import { Table } from "antd";
 import React from "react";
+import NewTodoForm from "../NewTodoForm/NewTodoForm";
 
 const TodoList = ({ selectedTodo, setSelectedTodo }) => {
   const [list, setList] = React.useState([
     {
-      id: 1,
       name: "My plan for this TH",
       description: "Make this todolist working",
+      done: false,
+    },
+    {
+      name: "Lunch",
+      description: "Don't forget to get food before the TH",
+      done: true,
     },
   ]);
   return (
     <div>
-      {list.map((todo) => {
-        return (
-          <div
-            style={{
-              cursor: "pointer",
-              padding: 10,
-              border: "solid black 1px",
-            }}
-            onClick={() => setSelectedTodo(todo)}
-          >
-            {todo.name}
-          </div>
-        );
+      {list.map((todo, i) => {
+        return <div key={i}>{todo.name}</div>;
       })}
+      <NewTodoForm
+        onSubmit={(newTodo) => {
+          // TODO : add the new todo to the list
+        }}
+      />
     </div>
   );
 };

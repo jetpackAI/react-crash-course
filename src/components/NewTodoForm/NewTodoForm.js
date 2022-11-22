@@ -2,7 +2,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Button, Form, Input, Modal, Row } from "antd";
 import React from "react";
 
-const NewTodoForm = () => {
+const NewTodoForm = ({ onSubmit }) => {
   const [name, setName] = React.useState("");
   return (
     <Row justify="end">
