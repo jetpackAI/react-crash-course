@@ -18,6 +18,8 @@ const TodoList = ({ selectedTodo, setSelectedTodo }) => {
   return (
     <div>
       {list.map((todo, i) => {
+        // TODO: Improve the list rendering https://www.w3schools.com/react/react_css.asp
+        // TODO: Click on a todo should select it
         return <div key={i}>{todo.name}</div>;
       })}
       <NewTodoForm
