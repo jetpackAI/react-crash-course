@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-
-# Jetpack React Workshop
-
-=======
-
 # Jetpack React Workshop - Todo list
-
-> > > > > > > f292644e6077d7bf40c77ab41d9390b8e7c9f2af
 
 This project is an introduction to react for non-frontend developers
 
