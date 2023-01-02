@@ -1,9 +1,7 @@
 import { Table } from "antd";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "antd";
 import axios from "axios";
-import React from "react";
 
 const SimulationList = ({ selectedSimulationId, setSelectedSimulationId }) => {
   const { data = [] } = useQuery(["list"], async () => {
