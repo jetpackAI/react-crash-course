@@ -1,5 +1,5 @@
-import * as Plot from "@observablehq/plot";
 import { PlotFigure } from "plot-react";
+import * as Plot from "@observablehq/plot";
 import React from "react";
 
 const fakedata = [

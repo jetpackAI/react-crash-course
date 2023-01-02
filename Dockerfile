@@ -13,4 +13,4 @@ ENV PATH /react-docker/node_modules/.bin:$PATH
 RUN npm install
 # Deploy app for local development
 #CMD npx react-scripts start
-CMD npm install && npm start --host 0.0.0.0 --port 3000 --disableHostCheck true
+CMD npm start --host 0.0.0.0 --port 3000 --disableHostCheck true
